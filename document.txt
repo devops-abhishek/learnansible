@@ -24,3 +24,21 @@ Dictionary
       Calories: 62
       Fat: 0.3 g
       Carbs: 16 g
+
+
+Modules:
+  command
+  script
+  yum
+  service
+  ping
+
+These are imperative way of communication :  
+ansible commands :
+  #ansible all -a <command>
+  #ansible all -a "date"
+ansible module :
+  #ansible all -m <module>
+  #ansible all -m ping
+  
+ Use declarative way to version control your playbooks. 

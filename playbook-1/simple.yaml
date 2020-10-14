@@ -1,0 +1,26 @@
+-
+  name: "Play 1"
+  hosts: all
+  tasks:
+  -
+    name: "Task 1 : run command"
+    command: date
+  -
+    name: "Task 2 : run script"
+    script: date.sh
+  -
+    name: "Task 3 : Install httpd"
+    yum:
+      name: httpd
+      state: present
+  -
+    name: "Task 4: start httpd service"
+    service:
+      name: httpd
+      state: started
+  -
+    name: "Task 5: Ping Test"
+    ping:
+
+
+# ansible-playbook simple.yaml -i inventory.txt
