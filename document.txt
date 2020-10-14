@@ -1,0 +1,26 @@
+YAML is the configuration data.
+
+Format :
+Key-Value Pair
+    Fruit: Apple
+    Vegetable: Carrot
+
+Array/List
+    Fruits:
+    - Orange
+    - Apple
+
+    Vegetables:
+    - Carrot
+    - Tomato
+
+Dictionary
+    Banana:
+      Calories: 105
+      Fat: 0.4 g
+      Carbs: 27 g
+
+    Grapes:
+      Calories: 62
+      Fat: 0.3 g
+      Carbs: 16 g
