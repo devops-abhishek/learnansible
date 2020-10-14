@@ -1,0 +1,25 @@
+web01 ansible_host=web01.prod.com ansible_connection=ssh  ansbile_port=22 ansible_user=root ansible_ssh_pass=redhat
+web02 ansible_host=web02.prod.com ansible_connection=ssh  ansbile_port=22 ansible_user=root ansible_ssh_pass=redhat
+web03 ansible_host=web03.prod.com ansible_connection=ssh  ansbile_port=22 ansible_user=root ansible_ssh_pass=redhat
+
+db01 ansible_host=db01.prod.com ansible_connection=ssh  ansbile_port=22 ansible_user=root ansible_ssh_pass=redhat
+db02 ansible_host=db02.prod.com ansible_connection=ssh  ansbile_port=22 ansible_user=root ansible_ssh_pass=redhat
+
+win01 ansible_host=win01.prod.com ansible_connection=winrm  ansbile_port=5986 ansible_user=administrator ansible_password=test@!23
+
+[web_servers]
+web01
+web02
+web03
+
+[db_servers]
+db01
+db02
+
+[windows_servers]
+win01
+
+[all_servers:children]
+web_servers
+db_servers
+windows_servers
