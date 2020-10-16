@@ -1,0 +1,47 @@
+-
+  name: "User Management"
+  hosts: all
+  become: yes
+  vars:
+    add_users:
+      -
+        username: "abhishek.chordia"
+        groups: "root"
+      -
+        username: "swati.chordia"
+        groups: "abhishek"
+      -
+        username: "kartik.jain"
+        groups: "abhishek"
+    remove_users:
+      -
+        username: "paul"
+      -
+        username: "tanya"
+  tasks:
+    -
+      name: "Create a new User"
+      user:
+        name: "{{ item.username }}"
+        group: "{{ item.groups }}"
+        state: "present"
+      with_items: "{{ add_users }}"
+    -
+      name: "Delete old User"
+      user:
+        name: "{{ item.username}}"
+        state: "absent"
+      with_items: "{{ remove_users }}"
+    -
+      name: "Add authorized_key"
+      authorized_key:
+        user: "{{ item.username}}"
+        key: "{{ lookup('file', 'files/'+ item.username + '.key.pub') }}"
+      with_items: "{{ add_users }}"
+    - 
+      name: "Allow admin users to sudo without a password"
+      lineinfile:
+        dest: "/etc/sudoers" # path: in version 2.3
+        state: "present"
+        regexp: "^%root"
+        line: "%root ALL=(ALL) NOPASSWD: ALL"
