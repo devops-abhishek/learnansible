@@ -1,0 +1,8 @@
+-
+  name: "Playbook for variables using include_vars"
+  hosts: all
+  tasks:
+    -
+      include_vars: './vars/{{ ansible_os_family }}+ _vars.yaml'
+    -
+      debug: var=fname

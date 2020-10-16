@@ -1,0 +1,11 @@
+-
+  name: "Playbook for variables"
+  hosts: all
+  vars_files:
+    - "./vars/vars.yaml"
+  tasks:
+    -
+      name: "Print variables"
+      debug: msg='Hello, {{ fname }} {{ lname }}'
+
+    
