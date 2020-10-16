@@ -1,0 +1,29 @@
+-
+  name: "Play 1"
+  hosts: all
+  become: yes
+  tasks:
+  -
+    name: "Task 1 : Change directory before running script"
+    script: test.sh chdir=/opt
+  -
+    name: "Creates parameter first check folder is their and if not their then create the foler"
+    command: mkdir /opt/test creates=/opt/test
+  -
+    name: "Task 3 : Copy module"
+    copy:
+      src: test.sh
+      dest: /opt/1.sh
+  -
+    name: "Task 4: lineinfile module"
+    lineinfile:
+      path: /etc/resolve.conf
+      line: 'nameserver 8.8.8.8'
+  -
+    name: 'Create a new user'
+    user:
+       name: web_user
+       uid: 1040
+       group: developers
+
+# ansible-playbook simple.yaml -i inventory.txt
