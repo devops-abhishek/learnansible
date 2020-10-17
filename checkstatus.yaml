@@ -1,0 +1,22 @@
+# -
+#   name: "Check status of service and email if it is down"
+#   hosts: all
+#   tasks:
+#     - command: systemctl status httpd
+#       register: result
+#     - mail:
+#         to: mail@abhishekchordia@gmail.com
+#         subject: "httpd down"
+#         body: Httpd service down
+#       when: result.stdout.find('down') != -1
+
+-
+  name: "print to stdout"
+  hosts: all
+  tasks:
+    -
+      command: echo "Hello World"
+      register: printhello
+
+    - debug: msg="{{ printhello.stdout }}"
+    - debug: msg="{{ printhello.stderr }}"
